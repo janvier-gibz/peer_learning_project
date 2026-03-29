@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+print("Password from env:", os.getenv("DB_PASSWORD"))
 
 
 def connect_db():
@@ -44,9 +45,7 @@ def create_tables(conn):
         id INT AUTO_INCREMENT PRIMARY KEY,
         product_name VARCHAR(100),
         quantity INT,
-        total_price FLOAT,
-        phone VARCHAR(20),
-        location VARCHAR(100)
+        total_price FLOAT
     )
     """)
 
