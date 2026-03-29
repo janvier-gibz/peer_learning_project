@@ -38,8 +38,6 @@ class Shop:
         try:
             name = input("Enter product name: ")
             qty = int(input("Enter quantity: "))
-            phone = input("Enter buyer phone number: ")
-            location = input("Enter buyer location: ")
 
             self.cursor.execute(
                 "SELECT quantity, price FROM products WHERE name=%s",
@@ -63,9 +61,9 @@ class Shop:
                     # 🔥 Insert with phone + location
                     self.cursor.execute(
                         """INSERT INTO sales 
-                        (product_name, quantity, total_price, phone, location) 
+                        (product_name, quantity, total_price) 
                         VALUES (%s, %s, %s, %s, %s)""",
-                        (name, qty, total, phone, location)
+                        (name, qty, total)
                     )
 
                     self.conn.commit()
@@ -94,8 +92,6 @@ ID: {s[0]}
 Product: {s[1]}
 Quantity: {s[2]}
 Total: {s[3]}
-Phone: {s[4]}
-Location: {s[5]}
 ------------------------
 """)
 
